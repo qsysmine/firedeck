@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400italic,100,700italic,300,700,400|Roboto+Slab:100,300,400,700);
+.hiddden {
+  display: none;
+}
+#main,
+#mainDash,
+#mainEdit {
+  font-weight: normal;
+  font-family: "Roboto", "Montserrat", "HelveticaNeue", Helvetica, sans-serif;
+}
+.btn,
+h1>small {
+  font-family: "Roboto", "Montserrat", "HelveticaNeue", Helvetica, sans-serif;
+  font-weight: normal;
+}
+b,
+strong {
+  font-weight: bold;
+}
+p,
+.alert,
+ul,
+li,
+span {
+  font-size: 1.3em;
+}
+p {
+  text-indent: 2em;
+}
+.logo,
+h1,
+h3,
+h5 {
+  font-weight: bold;
+  font-family: "Montserrat", "Roboto", "HelveticaNeue", Helvetica, sans-serif;
+  color: #000;
+}
+.well,
+.well-lg {
+  box-shadow: box-shadow: 5px 5px 5px black;
+}
+.editor {
+  margin: auto;
+  display: block;
+  border: 3px solid #000;
+  padding: 3em;
+}
+.presentationLink {
+  cursor: pointer;
+  transition: background-color 0.5s, color 0.5s;
+}
+#mainEdit {
+  flex-direction: column;
+}
+.presentationLink:hover {
+  background-color: #000;
+  color: #FFF;
+}
+#toolbar {
+  font-size: 1.5em;
+}
+#editor {
+  font-size: 1.5em;
+  background-color: #ccc;
+  border-radius: 3px;
+  margin-bottom: 1em;
+}
+#toolbar2 {
+  text-align: right;
+}

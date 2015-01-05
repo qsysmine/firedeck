@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Teacher Dashboard - Firedeck</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/paper/bootstrap.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/index.css" rel="stylesheet">
+  <meta name="theme-color" content="#4caf50">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand logo" href="/#">Fire Deck.</a>
+      </div>
+      <div class="navbar-form navbar-right">
+        <a href="http://github.com/qsysmine/firedeck" target="_blank" class="btn btn-info">&nbsp;<i class="fa fa-github"></i>
+          &nbsp;
+        </a>
+        <a href="./present#" class="btn btn-success" id="presentBtn" disabled>Present</a>
+        <a href="#" class="btn btn-danger" id="logout">Log out of <b class="usName">[loading]</b></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainDash" class="container-fluid">
+    <div class="page-header">
+      <h1>Teacher Dashboard <small>Logged in as <span class="usName"></span></small></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3><span class="presNumber"></span>&nbsp;Presentations</h3>
+        <div id="presentations">
+          <ul id="presList" class="list-group"></ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3>Controls</h3>
+        <a id="newPres" class="btn btn-success">New Presentation</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainEdit" class="container-fluid hiddden">
+    <div class="page-header">
+      <h1><span class="presName"></span><small>Editing</small></h1>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel">
+          <div id="toolbar" class="panel-body">
+            <button class="ql-bold btn btn-info"><i class="fa fa-bold"></i>
+            </button>
+            <button class="ql-italic btn btn-success"><i class="fa fa-italic"></i>
+            </button>
+            <button class="ql-underline btn btn-success"><i class="fa fa-underline"></i>
+            </button>
+            <span class="ql-format-group">
+            <span title="List" class="ql-format-button ql-list"></span>
+            <span class="ql-format-separator"></span>
+            <span title="Bullet" class="ql-format-button ql-bullet"></span>
+            <span class="ql-format-separator"></span>
+            <select title="Text Alignment" class="ql-align btn btn-default">
+              <option value="left" label="Left" selected></option>
+              <option value="center" label="Centre"></option>
+              <option value="right" label="Right"></option>
+              <option value="justify" label="Justify"></option>
+            </select>
+            </span>
+            <select title="Font" class="ql-font btn btn-default">
+              <option value="Montserrat,Roboto,sans-serif" selected="">Classic</option>
+              <option value="Roboto,sans-serif">Modern</option>
+              <option value="Roboto Slab,serif">Serif</option>
+              <option value="monospace">Monospace</option>
+            </select>
+            <select title="Size" class="ql-size btn btn-default">
+              <option value="1.5em" selected>Normal</option>
+              <option value="45px">Secondary</option>
+              <option value="56px">Primary</option>
+            </select>
+            <span id="prevSlide" class="btn btn-danger"><i class="fa fa-angle-left"></i></span>
+            <span id="nextSlide" class="btn btn-success"><i class="fa fa-angle-right"></i></span>
+
+            <span id="newSlide" class="btn btn-success"><i class="fa fa-plus"></i></span>
+            <span class="delSlide btn btn-danger"><i class="fa fa-times"></i></span>
+            <span id="currentSlide">Slide 1</span>
+            <span id="loading" class="badge"></span>
+          </div>
+        </div>
+        <div id="editor">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title">Slides</h3>
+          </div>
+          <div class="panel-body">
+            <ol id="sL">
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="chooseUsername" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modalLabel">Label.</h4>
+        </div>
+        <div class="modal-body" id="modalBody">
+          Body
+        </div>
+        <div class="modal-footer" id="modalFooter">
+          Footers
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="//cdn.quilljs.com/0.19.8/quill.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+<script src="https://cdn.rawgit.com/mrsharpoblunto/foswig.js/master/dist/foswig.js"></script>
+<script src="/uiQuirks.js"></script>
+<script>
+  var fb = new Firebase("https://firedeck.firebaseio.com");
+  var quill = new Quill('#editor');
+  quill.addModule('toolbar', {
+    container: '#toolbar'
+  });
+</script>
+<script src="/dashboard/dashAuth.js"></script>
+<script src="./presentationEditing.js"></script>
+<script src="./index.js"></script>
+<script src="/qEditWrap.js"></script>
+
+</html>
