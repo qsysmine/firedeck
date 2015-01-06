@@ -23,7 +23,7 @@
       uid = aliasSnapshot.val().uid;
       console.log(key, uid);
       fb.child("presentations/" + uid + "/" + key + "/presenting_currentSlide").on("value", function(cSSnapshot) {
-        sN = cSSnapshot.val();
+        sN = cSSnapshot.val().s;
         console.log(sN);
         fb.child("presentations/" + uid + "/" + key + "/order").once("value", function(orderSnapshot) {
           order = orderSnapshot.val();

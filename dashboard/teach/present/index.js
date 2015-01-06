@@ -8,7 +8,7 @@
     };
     var presAlias = "";
     var updatePresentation = function() {
-      var sN = presData.presenting_currentSlide;
+      var sN = presData.presenting_currentSlide.s;
       var sC = presData.slides[presData.order[sN][1]][presData.order[sN][0]][presData.order[sN][1] == "content" ? "contents" : "query"];
       $('.presName').text(presData.name);
       $('#slideContents').html(sC);
@@ -28,20 +28,20 @@
           "close": true
         });
       });
-      fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide").set(0);
+      fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide/s").set(0);
       fb.child("aliases").child(presAlias).set({
         uid: fb.getAuth().uid,
         key: presKey
       });
     };
     $('#nextSlide').click(function() {
-      if (presData.order.length - 1 > presData.presenting_currentSlide) {
-        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide").set(presData.presenting_currentSlide + 1);
+      if (presData.order.length - 1 > presData.presenting_currentSlide.s) {
+        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide/s").set(presData.presenting_currentSlide.s + 1);
       }
     });
     $('#prevSlide').click(function() {
-      if (0 < presData.presenting_currentSlide) {
-        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide").set(presData.presenting_currentSlide - 1);
+      if (0 < presData.presenting_currentSlide.s) {
+        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide/s").set(presData.presenting_currentSlide.s - 1);
       }
     });
     fb.child("presentations/" + fb.getAuth().uid + "/" + presKey).once("value", function(snap) {

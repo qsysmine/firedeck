@@ -30,11 +30,16 @@
 
   <div id="mainDash" class="container-fluid">
     <div class="page-header">
-      <h1>Teacher Dashboard <small>Logged in as <span class="usName"></span></small></h1>
+      <h1>Teacher Dashboard
+        <small>Logged in as
+          <span class="usName"></span>
+        </small>
+      </h1>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h3><span class="presNumber"></span>&nbsp;Presentations</h3>
+        <h3>
+          <span class="presNumber"></span>&nbsp;Presentations</h3>
         <div id="presentations">
           <ul id="presList" class="list-group"></ul>
         </div>
@@ -48,7 +53,10 @@
 
   <div id="mainEdit" class="container-fluid hiddden">
     <div class="page-header">
-      <h1><span class="presName"></span><small>Editing</small></h1>
+      <h1>
+        <span class="presName"></span>
+        <small>Editing</small>
+      </h1>
     </div>
     <div class="row">
       <div class="col-md-9">
@@ -60,17 +68,19 @@
             </button>
             <button class="ql-underline btn btn-success"><i class="fa fa-underline"></i>
             </button>
+            <button class="ql-image btn btn-success"><i class="fa fa-image"></i>
+            </button>
             <span class="ql-format-group">
-            <span title="List" class="ql-format-button ql-list"></span>
-            <span class="ql-format-separator"></span>
-            <span title="Bullet" class="ql-format-button ql-bullet"></span>
-            <span class="ql-format-separator"></span>
-            <select title="Text Alignment" class="ql-align btn btn-default">
-              <option value="left" label="Left" selected></option>
-              <option value="center" label="Centre"></option>
-              <option value="right" label="Right"></option>
-              <option value="justify" label="Justify"></option>
-            </select>
+              <span title="List" class="ql-format-button ql-list"></span>
+              <span class="ql-format-separator"></span>
+              <span title="Bullet" class="ql-format-button ql-bullet"></span>
+              <span class="ql-format-separator"></span>
+              <select title="Text Alignment" class="ql-align btn btn-default">
+                <option value="left" label="Left" selected></option>
+                <option value="center" label="Centre"></option>
+                <option value="right" label="Right"></option>
+                <option value="justify" label="Justify"></option>
+              </select>
             </span>
             <select title="Font" class="ql-font btn btn-default">
               <option value="Montserrat,Roboto,sans-serif" selected="">Classic</option>
@@ -83,11 +93,15 @@
               <option value="45px">Secondary</option>
               <option value="56px">Primary</option>
             </select>
-            <span id="prevSlide" class="btn btn-danger"><i class="fa fa-angle-left"></i></span>
-            <span id="nextSlide" class="btn btn-success"><i class="fa fa-angle-right"></i></span>
+            <span id="prevSlide" class="btn btn-danger"><i class="fa fa-angle-left"></i>
+            </span>
+            <span id="nextSlide" class="btn btn-success"><i class="fa fa-angle-right"></i>
+            </span>
 
-            <span id="newSlide" class="btn btn-success"><i class="fa fa-plus"></i></span>
-            <span class="delSlide btn btn-danger"><i class="fa fa-times"></i></span>
+            <span id="newSlide" class="btn btn-success"><i class="fa fa-plus"></i>
+            </span>
+            <span class="delSlide btn btn-danger"><i class="fa fa-times"></i>
+            </span>
             <span id="currentSlide">Slide 1</span>
             <span id="loading" class="badge"></span>
           </div>
