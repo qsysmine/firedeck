@@ -95,7 +95,7 @@
         var nSKey = nSRef.key();
         order.push([nSKey, $('#type').val()]);
         presData.slides[$('#type').val()][nSKey] = objToPush;
-        quill.setHTML(objToPush[$('#type').val == "questions" ? "query" : "contents"]);
+        quill.setHTML(objToPush[$('#type').val() == "questions" ? "query" : "contents"]);
         fb.child("presentations/" + fb.getAuth().uid + "/" + key + "/order").set(order);
         var sN = currentSlide + 1;
         $('#currentSlide').text("Slide " + sN);

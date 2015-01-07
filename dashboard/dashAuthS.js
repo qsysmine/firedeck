@@ -8,10 +8,10 @@
   $('.usName').text(auth.google.displayName);
   //Logout behaviour
   $('.btn#logout').click(function() {
-    if (fb.getAuth != null) {
+    if (fb.getAuth() != null) {
       fb.unauth();
     }
-    location.assign("/#");
+    location.assign("/");
   });
   //Username behaviour
   var userDataPath = fb.child("users").child(auth.uid);

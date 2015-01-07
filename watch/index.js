@@ -16,10 +16,28 @@
         var slC = slideSnapshot.val()[slT == "content" ? "contents" : "query"];
         console.log(slC);
         $('#slideContents').html(slC);
+        var submit = function() {
+          var content = $('#respC').val();
+          fb.child("presentations/" + uid + "/" + key + "/slides/questions/" + slK + "/responses/" + fb.getAuth().uid).set({
+            "content": content,
+            "type": "string",
+            "name": fb.getAuth().google.displayName
+          });
+        };
         if (slT == "questions") {
           $('#qI').slideDown();
+          $('#respC').on("keypress", function(e) {
+            if (e.keyCode == 13) {
+              submit();
+            }
+          });
+          $('#respS').on('click', function() {
+            submit();
+          });
         } else {
           $('#qI').slideUp();
+          $('#respC').off("keypress");
+          $('#respS').off("keypress");
         }
       });
     };

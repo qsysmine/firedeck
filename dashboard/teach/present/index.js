@@ -14,6 +14,20 @@
       $('#slideContents').html(sC);
       var sN2 = sN + 1;
       $('#slideNumber').text("Slide " + sN + ";");
+      if (presData.order[sN][1] == "questions") {
+        $('#responsesC').show();
+        $('#responses').html("");
+        for (var k in presData.slides[presData.order[sN][1]][presData.order[sN][0]].responses) {
+          var r = presData.slides[presData.order[sN][1]][presData.order[sN][0]].responses[k];
+          var c = r.content;
+          var t = r.type;
+          var u = r.name;
+          $('#responses').append("<li class=\"list-group-item\"><b>" + u + "</b><br/>" + c + "</li>")
+        }
+      } else {
+        $('#responses').html("");
+        $('#responsesC').hide();
+      }
     };
     var activatePresentation = function() {
       var url = "http://firedeck.tk/watch#" + presAlias;
