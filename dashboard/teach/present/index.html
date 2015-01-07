@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Present - Fire Deck</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/paper/bootstrap.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/index.css" rel="stylesheet">
+  <meta name="theme-color" content="#4caf50">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand logo" href="/#">Fire Deck.</a>
+      </div>
+      <div class="navbar-form navbar-right">
+        <a href="http://github.com/qsysmine/firedeck" target="_blank" class="btn btn-info">&nbsp;<i class="fa fa-github"></i>
+          &nbsp;
+        </a>
+        <a href="#" class="btn btn-danger" id="logout">Log out of <b class="usName">[loading]</b></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="main">
+    <div class="page-title">
+      <h1>Presenter Controls:
+        <small class="presName"></small>
+      </h1>
+    </div>
+    <div id="controls" class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">Controls</h3>
+      </div>
+      <div class="panel-body">
+        <span id="prevSlide" class="btn btn-danger"><i class="fa fa-angle-left"></i>&nbsp;</span>&nbsp;
+        <span id="nextSlide" class="btn btn-success"><i class="fa fa-angle-right"></i>
+        </span>&nbsp;
+        <span id="slideNumber"></span>&nbsp;
+        <span id="clientNums"></span>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">What they see.</h3>
+      </div>
+      <div class="panel-body" id="slideContents"></div>
+    </div>
+
+    <div class="panel panel-danger" id="responsesC">
+      <div class="panel-heading">
+        <h3 class="panel-title">Their Responses</h3>
+      </div>
+      <div class="panel-body">
+        <ul id="responses" class="list-group"></ul>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="chooseUsername" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modalLabel">Label.</h4>
+        </div>
+        <div class="modal-body" id="modalBody">
+          Body
+        </div>
+        <div class="modal-footer" id="modalFooter">
+          Footers
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+<script src="https://cdn.rawgit.com/mrsharpoblunto/foswig.js/master/dist/foswig.js"></script>
+<script src="/uiQuirks.js"></script>
+<script>
+  var fb = new Firebase("https://firedeck.firebaseio.com");
+</script>
+<script src="/dashboard/dashAuth.js"></script>
+<script src="/fosDict.js"></script>
+<script src="index.js"></script>
+
+</html>
