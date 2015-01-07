@@ -13,7 +13,7 @@
       $('.presName').text(presData.name);
       $('#slideContents').html(sC);
       var sN2 = sN + 1;
-      $('#slideNumber').text(sN);
+      $('#slideNumber').text("Slide " + sN + ";");
     };
     var activatePresentation = function() {
       var url = "http://firedeck.tk/watch#" + presAlias;
@@ -33,6 +33,7 @@
         uid: fb.getAuth().uid,
         key: presKey
       });
+      fb.child("aliases").child(presAlias).onDisconnect().remove();
     };
     $('#nextSlide').click(function() {
       if (presData.order.length - 1 > presData.presenting_currentSlide.s) {
@@ -56,6 +57,12 @@
     fb.child("presentations/" + fb.getAuth().uid + "/" + presKey).on("value", function(snap) {
       presData = snap.val();
       updatePresentation();
-    })
+    });
+    fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_clientsJoined").on("value", function(snap) {
+      var keys = [],
+        i = 0;
+      for (keys[i++] in snap.val()) {}
+      $('#clientNums').text(keys.length + " viewers");
+    });
   }
 })();

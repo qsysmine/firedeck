@@ -16,12 +16,22 @@
         var slC = slideSnapshot.val()[slT == "content" ? "contents" : "query"];
         console.log(slC);
         $('#slideContents').html(slC);
+        if (slT == "questions") {
+          $('#qI').slideDown();
+        } else {
+          $('#qI').slideUp();
+        }
       });
     };
     fb.child("aliases").child(alias).once("value", function(aliasSnapshot) {
       key = aliasSnapshot.val().key;
       uid = aliasSnapshot.val().uid;
       console.log(key, uid);
+      fb.child("presentations/" + uid + "/" + key + "/presenting_clientsJoined/" + fb.getAuth().uid).set({
+        name: fb.getAuth().google.displayName
+      });
+      fb.child("presentations/" + uid + "/" + key + "/presenting_clientsJoined/" + fb.getAuth().uid).onDisconnect().remove();
+      //
       fb.child("presentations/" + uid + "/" + key + "/presenting_currentSlide").on("value", function(cSSnapshot) {
         sN = cSSnapshot.val().s;
         console.log(sN);

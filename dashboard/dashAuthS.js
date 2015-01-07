@@ -2,7 +2,7 @@
   //Popup behaviour
   var auth = fb.getAuth();
   if (auth == null || auth.provider != "google") {
-    location.assign("/sL");
+    location.assign("/#l");
   }
   //UI stuff
   $('.usName').text(auth.google.displayName);

@@ -19,14 +19,17 @@
       </div>
       <div class="navbar-form navbar-right">
         <a href="http://github.com/qsysmine/firedeck" target="_blank" class="btn btn-info">&nbsp;<i class="fa fa-github"></i>&nbsp;</a>
-        <a href="/tL" class="btn btn-danger">Teacher Login</a>
-        <a href="/sL" class="btn btn-success">Student Login</a>
+        <span id="tLBtn" onclick="tauth()" class="btn btn-danger">Teacher Login</span>
+        <span id="sLBtn" onclick="sauth()" class="btn btn-success">Student Login</span>
       </div>
     </div>
   </div>
   <div class="container-fluid" id="main">
     <div class="page-header">
-      <h1><span class="logo">Fire Deck.</span> <small>The free, open-source alternative to Pear Deck.</small></h1>
+      <h1>
+        <span class="logo">Fire Deck.</span>
+        <small>The free, open-source alternative to Pear Deck.</small>
+      </h1>
     </div>
     <p>
       Create presentations with interactivity; these can be accessed using iPads, Chromebooks, and almost any other device using the modern web. To create a presentation, click the Teacher Login button and sign in using Google; to view a pre-made Fire Deck,
@@ -34,7 +37,13 @@
     </p>
   </div>
 </body>
+<script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+<script>
+  var ref = new Firebase("https://firedeck.firebaseio.com/");
+</script>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="uiQuirks.js"></script>
+<script src="/index.js"></script>
 
 </html>
