@@ -94,6 +94,19 @@
         $('#sL').append("<li class=\"list-item slideCl\" data-slide=\"i\">" + (currentSlide == k ? "<b>" : "") + ($(getSlide(k).html).filter('div').get(0) == undefined ? "Untitled" : $(getSlide(k).html).filter('div').get(0).innerText) + (currentSlide == k ? "<b>" : "") + "<span class=\"badge deleter\"></li>");
       }
       $('#currentSlide').text("Slide " + sN2);
+      console.log(getSlideList());
+      if (getSlideList()) {
+        if (sN2 == 1) {
+          $('#prevSlide').attr("disabled", "true");
+        } else {
+          $('#prevSlide').removeAttr("disabled");
+        }
+        if (sN2 >= Object.keys(getSlideList()).length) {
+          $('#nextSlide').attr("disabled", "true");
+        } else {
+          $('#nextSlide').removeAttr("disabled");
+        }
+      }
     };
     var saveSlide = function(sK, cB) {
       $('span#loading').text("Saved.");
