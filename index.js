@@ -6,7 +6,7 @@ tauth = function() {
       location.assign("/dashboard/teach#welcome");
     });
   } else {
-    location.assign("/dashboard/teach");
+    location.assign("./dashboard/teach");
   }
 }
 sauth = function() {
@@ -14,10 +14,10 @@ sauth = function() {
     ref.authWithOAuthPopup("google", function(error, authData) {
 
       console.log("Authenticated successfully with payload:", authData);
-      location.assign("/dashboard/teach#welcome");
+      location.assign("./dashboard/learn#welcome");
     });
   } else {
-    location.assign("/dashboard/learn");
+    location.assign("./dashboard/learn");
   }
 }
 if (location.hash == "#l") {

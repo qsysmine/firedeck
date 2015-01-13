@@ -60,6 +60,21 @@
     </div>
     <div class="row">
       <div class="col-md-9">
+        <div id="imageForm" class="panel">
+          <div class="panel-body">
+            <form id="up-form">
+              <div class="form-group">
+                <label for="imageURL">Image URL</label>
+                <input type="text" id="imageURL" placeholder="URL">
+              </div>
+              <label for="fSel">Upload Image [Coming soon]</label>
+              <input id="fSel" type="file" multiple disabled/>
+              <div class="form-group">
+                <button id="imageSubmitBtn" class="btn btn-primary">Put Image.</button>
+              </div>
+            </form>
+          </div>
+        </div>
         <div class="panel">
           <div id="toolbar" class="panel-body">
             <button class="ql-bold btn btn-info"><i class="fa fa-bold"></i>
@@ -68,7 +83,7 @@
             </button>
             <button class="ql-underline btn btn-success"><i class="fa fa-underline"></i>
             </button>
-            <button class="ql-image btn btn-success"><i class="fa fa-image"></i>
+            <button id="imageBtn" class="ql-image btn btn-success"><i class="fa fa-image"></i>
             </button>
             <span class="ql-format-group">
               <span title="List" class="ql-format-button ql-list"></span>
@@ -140,7 +155,7 @@
     </div>
   </div>
 </body>
-<script src="//cdn.quilljs.com/0.19.8/quill.js"></script>
+<script src="/quill.min.js"></script>
 <script src="http://code.jquery.com/jquery.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
@@ -154,6 +169,8 @@
   });
 </script>
 <script src="../dashAuth.js"></script>
+
+<script src="https://code.ospry.io/v1/ospry.js"></script>
 <script src="./presentationEditing.js"></script>
 <script src="./index.js"></script>
 <script src="../../qEditWrap.js"></script>

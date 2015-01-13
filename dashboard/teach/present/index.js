@@ -3,22 +3,56 @@
     location.assign("/dashboard/teach");
   } else {
     var presKey = location.hash.split("#")[1];
-    var presData = {
-      "name": "bruh"
+    var presData = {};
+    var getSlide = function(sK, push) {
+      if (push) {
+        $('#slideContents').html(presData.slides[sK].html);
+      }
+      return presData.slides[sK];
+    };
+    var getSlideList = function() {
+      return presData.slides;
+    };
+    var getSlideNumber = function(sK) {
+      var n = 0;
+      for (var k in getSlideList()) {
+        if (k == sK) {
+          return n;
+        }
+        n++;
+      }
+      return -1;
+    };
+    var getNextSlide = function(sK) {
+      var sN = getSlideNumber(sK);
+      return Object.keys(getSlideList())[sN + 1];
+    };
+    var getPrevSlide = function(sK) {
+      var sN = getSlideNumber(sK);
+      return Object.keys(getSlideList())[sN - 1];
     };
     var presAlias = "";
     var updatePresentation = function() {
-      var sN = presData.presenting_currentSlide.s;
-      var sC = presData.slides[presData.order[sN][1]][presData.order[sN][0]][presData.order[sN][1] == "content" ? "contents" : "query"];
+      var sN = presData.presenting_currentSlide;
+      getSlide(sN, true);
       $('.presName').text(presData.name);
-      $('#slideContents').html(sC);
-      var sN2 = sN + 1;
-      $('#slideNumber').text("Slide " + sN + ";");
-      if (presData.order[sN][1] == "questions") {
+      var sN2 = getSlideNumber(sN) + 1;
+      $('#slideNumber').text("Slide " + sN2 + ";");
+      if (sN2 >= Object.keys(getSlideList()).length) {
+        $('#nextSlide').attr("disabled", "disabled");
+      } else {
+        $('#nextSlide').removeAttr("disabled");
+      }
+      if (sN2 == 1) {
+        $('#prevSlide').attr("disabled", "disabled");
+      } else {
+        $('#prevSlide').removeAttr("disabled");
+      }
+      if (getSlide(sN).type == "query") {
         $('#responsesC').show();
         $('#responses').html("");
-        for (var k in presData.slides[presData.order[sN][1]][presData.order[sN][0]].responses) {
-          var r = presData.slides[presData.order[sN][1]][presData.order[sN][0]].responses[k];
+        for (var k in presData.slides[sN].responses) {
+          var r = presData.slides[sN].responses[k];
           var c = r.content;
           var t = r.type;
           var u = r.name;
@@ -42,7 +76,7 @@
           "close": true
         });
       });
-      fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide/s").set(0);
+      fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide").set(Object.keys(presData.slides)[0]);
       fb.child("aliases").child(presAlias).set({
         uid: fb.getAuth().uid,
         key: presKey
@@ -50,13 +84,26 @@
       fb.child("aliases").child(presAlias).onDisconnect().remove();
     };
     $('#nextSlide').click(function() {
-      if (presData.order.length - 1 > presData.presenting_currentSlide.s) {
-        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide/s").set(presData.presenting_currentSlide.s + 1);
+      var currentSlide = presData.presenting_currentSlide;
+      console.log(this, currentSlide);
+      var slideNumber = getSlideNumber(currentSlide);
+      console.log(slideNumber);
+      if (slideNumber < Object.keys(getSlideList()).length) {
+        currentSlide = getNextSlide(currentSlide);
+        console.log(currentSlide);
+        getSlide(currentSlide, true);
+        //renderList();
+        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide").set(currentSlide);
       }
     });
     $('#prevSlide').click(function() {
-      if (0 < presData.presenting_currentSlide.s) {
-        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide/s").set(presData.presenting_currentSlide.s - 1);
+      var currentSlide = presData.presenting_currentSlide;
+      var slideNumber = getSlideNumber(currentSlide);
+      if (slideNumber > 0) {
+        currentSlide = getPrevSlide(currentSlide);
+        getSlide(currentSlide, true);
+        //renderList();
+        fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_currentSlide").set(currentSlide);
       }
     });
     fb.child("presentations/" + fb.getAuth().uid + "/" + presKey).once("value", function(snap) {
@@ -73,10 +120,9 @@
       updatePresentation();
     });
     fb.child("presentations/" + fb.getAuth().uid + "/" + presKey + "/presenting_clientsJoined").on("value", function(snap) {
-      var keys = [],
-        i = 0;
-      for (keys[i++] in snap.val()) {}
-      $('#clientNums').text(keys.length + " viewers");
+      if (snap.val() != null) {
+        $('#clientNums').text(Object.keys(snap.val()).length + " viewers");
+      }
     });
   }
 })();
