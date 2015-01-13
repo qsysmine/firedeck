@@ -28,7 +28,7 @@
     _modal({
       "title": "New Presentation",
       "body": "<div id=\"newPresError\"></div><div class=\"form-group\"><input type=\"text\" placeholder=\"Presentation Name\" class=\"form-control\" id=\"newPresName\"></div>",
-      "footer": "<a href=\"#\" class=\"btn btn-success\" id=\"newPresCreate\">Create</a>."
+      "footer": "<span class=\"btn btn-success\" id=\"newPresCreate\">Create</span>."
     });
     var newPres = function() {
       if ($('#newPresName').val() != "" && $('#newPresName').val() != null) {
@@ -48,6 +48,22 @@
         newPres();
       }
     });
-
+  });
+  //Set Colour
+  $('#setColour').click(function() {
+    _modal({
+      title: "Set your Favourite Colour",
+      body: "<div class\"form-group\"><input type=\"color\" id=\"newColor\" class=\"col form-control\"></div>",
+      footer: "<span class=\"btn btn-info\" id=\"newColorSet\">Set Colour</span>"
+    });
+    doColour();
+    $('#newColorSet').click(function() {
+      $('#newColorSet').off("click");
+      var colour = $('#newColor').val();
+      fb.child("users/" + fb.getAuth().uid + "/colour").set(colour);
+      _modal({
+        close: true
+      });
+    });
   });
 })();

@@ -65,6 +65,7 @@
     };
     var activatePresentation = function() {
       var url = "http://firedeck.tk/watch#" + presAlias;
+      $('#aliasLink').text(presAlias).attr("href", url);
       _modal({
         title: "Presentation is Live!",
         body: "<p><br/><b>URL:</b> <a href=\"" + url + "\">" + url + "</a><br/><b>Key [for student dashboard]:</b> " + presAlias + "</p>",

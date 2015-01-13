@@ -46,7 +46,8 @@
       </div>
       <div class="col-md-6">
         <h3>Controls</h3>
-        <a id="newPres" class="btn btn-success">New Presentation</a>
+        <span id="newPres" class="btn btn-success">New Presentation</span>
+        <span id="setColour" class="btn btn-info">Set Favourite Colour</span>
       </div>
     </div>
   </div>
@@ -160,7 +161,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
 <script src="https://cdn.rawgit.com/mrsharpoblunto/foswig.js/master/dist/foswig.js"></script>
-<script src="../../uiQuirks.js"></script>
 <script>
   var fb = new Firebase("https://firedeck.firebaseio.com");
   var quill = new Quill('#editor');
@@ -168,8 +168,8 @@
     container: '#toolbar'
   });
 </script>
+<script src="../../uiQuirks.js"></script>
 <script src="../dashAuth.js"></script>
-
 <script src="https://code.ospry.io/v1/ospry.js"></script>
 <script src="./presentationEditing.js"></script>
 <script src="./index.js"></script>

@@ -40,8 +40,11 @@
         <span id="prevSlide" class="btn btn-danger"><i class="fa fa-angle-left"></i>&nbsp;</span>&nbsp;
         <span id="nextSlide" class="btn btn-success"><i class="fa fa-angle-right"></i>
         </span>&nbsp;
+        <span>
+          <a href="http://firedeck.tk/watch#" id="aliasLink"></a>
+        </span>
         <span id="slideNumber"></span>&nbsp;
-        <span id="clientNums"></span>
+        <span id="clientNums">0 viewers</span>
       </div>
     </div>
     <div class="panel panel-info">
@@ -81,10 +84,10 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
 <script src="https://cdn.rawgit.com/mrsharpoblunto/foswig.js/master/dist/foswig.js"></script>
-<script src="/uiQuirks.js"></script>
 <script>
   var fb = new Firebase("https://firedeck.firebaseio.com");
 </script>
+<script src="/uiQuirks.js"></script>
 <script src="../../dashAuth.js"></script>
 <script src="/fosDict.js"></script>
 <script src="index.js"></script>
