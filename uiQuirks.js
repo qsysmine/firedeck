@@ -4,6 +4,9 @@
     console.log(location.hash);
     $('#main,#mainDash').prepend("<div class=\"alert alert-success alert-dismissible\" id=\"wAlert\" role=\"alert\"><button type=\"button\" class=\"close\" data-ui=\"Q\" data-uiQCl=\"#wAlert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Welcome, <span class=\"usName\">[loading]</span></div>");
   }
+  if (location.pathname.split("/firedeck.tk")[0] == "") {
+    location.assign("http://firedeck.tk" + location.pathname.split("/firedeck.tk")[1]);
+  }
   if (fb.getAuth() != null) {
     fb.child("users/" + fb.getAuth().uid + "/colour").on("value", function(snaparoon) {
       colour = snaparoon.val();
