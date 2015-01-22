@@ -21,5 +21,5 @@ sauth = function() {
   }
 }
 if (location.hash == "#l") {
-  $('body').prepend("<div class=\"alert alert-success alert-dismissible\" id=\"wAlert\" role=\"alert\"><button type=\"button\" class=\"close\" data-ui=\"Q\" data-uiQCl=\"#wAlert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Welcome, <span class=\"usName\">[loading]</span></div>");
+  $('body').prepend("<div class=\"alert alert-warning alert-dismissible\" id=\"wAlert\" role=\"alert\"><button type=\"button\" class=\"close\" data-ui=\"Q\" data-uiQCl=\"#wAlert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>Please log in with the buttons in the navigation bar below.</div>");
 }
