@@ -36,7 +36,7 @@
     $('*.close[data-ui="Q"]').on("click", function() {
       var elToClose = $($(this).attr("data-uiQCL"));
       elToClose.slideUp();
-      if (location.hash == "#welcome") {
+      if (location.hash == "#welcome" || location.hash == "#l") {
         location.hash = "";
       }
     });
